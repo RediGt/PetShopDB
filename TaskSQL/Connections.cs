@@ -27,7 +27,7 @@ namespace TaskSQL
             server = "localhost";
             database = "petshop";
             uid = "root";
-            password = "Mazda636";
+            password = "***";
             string connectionString;
             connectionString = "SERVER=" + server + ";" + "DATABASE=" +
                 database + ";" + "UID=" + uid + ";" + "PASSWORD=" + password + ";";
@@ -35,6 +35,7 @@ namespace TaskSQL
             connection = new MySqlConnection(connectionString);
         }
 
+#region Pets Connection Sector
         //Load all Data from DB & Search
         public List<Pets> LoadSqlPets(string chosenParameter, string searchText)
         {
@@ -120,7 +121,7 @@ namespace TaskSQL
             }
         }
 
-        public void SellPet(int petId, int sellerId, int clientId)
+        public void SellPet(int petId, int sellerId, int clientId, Label label)
         {
             string query = "UPDATE pets " +
                            "SET pets.PetStatus = 'Sold', " +
@@ -133,13 +134,14 @@ namespace TaskSQL
                 MySqlCommand cmd = new MySqlCommand(query, connection);
                 cmd.ExecuteNonQuery();
                 this.Close();
-                MessageBox.Show("Data Stored Successfully");
+                label.Text = "The pet is sold. Thank you.";
             }
             else
             {
-                MessageBox.Show("Error");
+                label.Text = "Error";
             }
         }
+#endregion
 
 #region Staff Connection Sector
         //Load Staff Data from DB & Search

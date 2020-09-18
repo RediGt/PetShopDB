@@ -32,6 +32,8 @@ namespace TaskSQL
             tabControl1.TabPages.Remove(tabClients);
             tabControl1.TabPages.Remove(tabPetType);
             HideBoxesInMain();
+            lblOperationWithPets.Visible = true;
+            lblOperationWithPets.Text = "";
         }
 
         private void InitializeBanner()
@@ -70,7 +72,8 @@ namespace TaskSQL
                 InitializeComboPetTypeInMain();
             }
         }
-        
+
+#region Pets TabControl Sector        
         private void PetDataToGrid()
         {
             dataGridMain.Rows.Clear();
@@ -125,23 +128,12 @@ namespace TaskSQL
         }
 
         private void bttNew_Click(object sender, EventArgs e)
-        {          
+        {
+            HideBoxesInMain();
+            ClearBoxesInMain();
+            comBoxMainPetType.Enabled = true;
             VisiblizeMainBoxesForNew();
             lblOperationWithPets.Text = "Insert new pet data :";
-            lblOperationWithPets.Visible = true;
-
-            /*if (comBoxMainPetType.Text != "" && tBoxMainPetName.Text != "" && comBoxMainStatus.Text != "")
-            {
-                Pets newPet = new Pets((pets.Count + 1).ToString(), comBoxMainPetType.Text, tBoxMainDescription.Text, tBoxMainPetName.Text,
-                    comBoxMainStatus.Text, "", "", "", "");
-                pets.Add(newPet);
-                string petTypeId = SearchForPetTypeId();
-                MessageBox.Show("petTypeID = " + petTypeId);
-
-                PetDataToGrid();
-                ClearBoxesInMain();
-                con.AddNewPet(pets, petTypeId);
-            }*/
         }
 
         private void comBoxMainPetType_TextChanged(object sender, EventArgs e)
@@ -161,10 +153,31 @@ namespace TaskSQL
             PetDataFilledCheck();
         }
 
+        private void comBoxMainSeller_TextChanged(object sender, EventArgs e)
+        {
+            PetDataFilledCheck();
+        }
+
+        private void comBoxMainClient_TextChanged(object sender, EventArgs e)
+        {
+            PetDataFilledCheck();
+        }
+
         private void PetDataFilledCheck()
         {
-            if (comBoxMainPetType.Text != "" &&
+            if (lblOperationWithPets.Text == "Insert new pet data :" &&
+                comBoxMainPetType.Text != "" &&
                 tBoxMainPetName.Text != "")
+            {
+                btnMainOK.Visible = true;
+                btnMainCancel.Visible = true;
+            }
+            else if (lblOperationWithPets.Text == "Fill in missing data :" &&
+                comBoxMainStatus.Text != "Sold" &&
+                comBoxMainPetType.Text != "" &&
+                tBoxMainPetName.Text != "" &&
+                comBoxMainSeller.Text != "" &&
+                comBoxMainClient.Text != "")
             {
                 btnMainOK.Visible = true;
                 btnMainCancel.Visible = true;
@@ -180,8 +193,8 @@ namespace TaskSQL
         {
             if (lblOperationWithPets.Text == "Insert new pet data :")
                 InsertNewPet();
-            //if (lblOperationWithStaff.Text == "Edit employee data :")
-            //    EditStaff();
+            if (lblOperationWithPets.Text == "Fill in missing data :")
+                SellPet();
         }
 
         private void InsertNewPet()
@@ -190,7 +203,6 @@ namespace TaskSQL
                     "Available", "", "", "", "");
             pets.Add(newPet);
             string petTypeId = SearchForPetTypeId();
-            //MessageBox.Show("petTypeID = " + petTypeId);
 
             PetDataToGrid();
             ClearBoxesInMain();
@@ -202,6 +214,7 @@ namespace TaskSQL
         {
             ClearBoxesInMain();
             HideBoxesInMain();
+            lblOperationWithPets.Visible = false;
         }
 
         private string SearchForPetTypeId()
@@ -232,35 +245,34 @@ namespace TaskSQL
         {
             ClearBoxesInMain();
             FromGrigToBoxesInMain();
+            lblOperationWithPets.Text = "Fill in missing data :";
         }
 
         private void bttSell_Click(object sender, EventArgs e)
         {
-            if (comBoxMainStatus.Text == "Sold")
-            {
-                MessageBox.Show("The Pet has been already Sold!");
-                return;
-            }
+            ClearBoxesInMain();
+            VisiblizeMainBoxesForSell();
+            lblOperationWithPets.Text = "Click on the List for necessary pet :";
+        }
 
-            if (comBoxMainStatus.Text == "Available" && comBoxMainSeller.Text != "" &&
-                comBoxMainClient.Text != "")
-            {
-                comBoxMainStatus.Text = "Sold";
-                int selectedPetIndex = dataGridMain.SelectedRows[0].Index;
-                int petId = Convert.ToInt32(pets[selectedPetIndex].id);
-                int sellerId = Convert.ToInt32(comBoxMainSeller.SelectedIndex + 1);
-                int clientId = Convert.ToInt32(comBoxMainClient.SelectedIndex + 1);
+        private void SellPet()
+        {
+            comBoxMainStatus.Text = "Sold";
+            int selectedPetIndex = dataGridMain.SelectedRows[0].Index;
+            int petId = Convert.ToInt32(pets[selectedPetIndex].id);
+            int sellerId = Convert.ToInt32(comBoxMainSeller.SelectedIndex + 1);
+            int clientId = Convert.ToInt32(comBoxMainClient.SelectedIndex + 1);
 
-                pets[selectedPetIndex].status = comBoxMainStatus.Text;
-                pets[selectedPetIndex].staffFirstName = staff[sellerId - 1].staffFirstName;
-                pets[selectedPetIndex].staffLastName = staff[sellerId - 1].staffLastName;
-                pets[selectedPetIndex].clientFirstName = clients[clientId - 1].clientFirstName;
-                pets[selectedPetIndex].clientLastName = clients[clientId - 1].clientLastName;
+            pets[selectedPetIndex].status = comBoxMainStatus.Text;
+            pets[selectedPetIndex].staffFirstName = staff[sellerId - 1].staffFirstName;
+            pets[selectedPetIndex].staffLastName = staff[sellerId - 1].staffLastName;
+            pets[selectedPetIndex].clientFirstName = clients[clientId - 1].clientFirstName;
+            pets[selectedPetIndex].clientLastName = clients[clientId - 1].clientLastName;
 
-                ClearBoxesInMain();
-                PetDataToGrid();
-                con.SellPet(petId, sellerId, clientId);
-            }
+            ClearBoxesInMain();
+            HideBoxesInMain();
+            PetDataToGrid();
+            con.SellPet(petId, sellerId, clientId, lblOperationWithPets);
         }
 
         private void ClearBoxesInMain()
@@ -297,8 +309,7 @@ namespace TaskSQL
             comBoxMainPetType.Visible = true;
             tBoxMainDescription.Visible = true;
             tBoxMainPetName.Visible = true;
-
-            
+           
             banner.Visible = false;
         }
 
@@ -311,6 +322,9 @@ namespace TaskSQL
             comBoxMainStatus.Visible = true;
             comBoxMainSeller.Visible = true;
             comBoxMainClient.Visible = true;
+
+            comBoxMainPetType.Enabled = false;
+            comBoxMainStatus.Enabled = false;
         }
 
         private void bttClear_Click(object sender, EventArgs e)
@@ -345,6 +359,8 @@ namespace TaskSQL
 
             HideStaffBoxes();
             lblOperationWithStaff.Text = "";
+            HideBoxesInMain();
+            lblOperationWithPets.Text = "";
 
             tabControl1.TabPages.Add(tabStaff);
             tabControl1.SelectedTab = tabStaff;
@@ -358,6 +374,8 @@ namespace TaskSQL
 
             HideClientsBoxes();
             lblOperationWithClients.Text = "";
+            HideBoxesInMain();
+            lblOperationWithPets.Text = "";
 
             tabControl1.TabPages.Add(tabClients);
             tabControl1.SelectedTab = tabClients;
@@ -371,12 +389,15 @@ namespace TaskSQL
 
             HidePetTypeBoxes();
             lblOperationWithPetType.Text = "";
+            HideBoxesInMain();
+            lblOperationWithPets.Text = "";
 
             tabControl1.TabPages.Add(tabPetType);
             tabControl1.SelectedTab = tabPetType;
 
             PetTypeDataToGrid();
         }
+#endregion
 
 #region Staff TabControl Sector
         private void btnStaffBack_Click(object sender, EventArgs e)
@@ -384,6 +405,7 @@ namespace TaskSQL
             tabControl1.TabPages.Remove(tabStaff);
             tabControl1.TabPages.Add(tabMain);
             tabControl1.SelectedTab = tabMain;
+            banner.Visible = true;
         }
 
         private void StaffDataToGrid()
@@ -557,6 +579,7 @@ namespace TaskSQL
             tabControl1.TabPages.Remove(tabClients);
             tabControl1.TabPages.Add(tabMain);
             tabControl1.SelectedTab = tabMain;
+            banner.Visible = true;
         }
        
         private void ClientsDataToGrid()
@@ -731,6 +754,7 @@ namespace TaskSQL
             tabControl1.TabPages.Remove(tabPetType);
             tabControl1.TabPages.Add(tabMain);
             tabControl1.SelectedTab = tabMain;
+            banner.Visible = true;
         }
 
         private void PetTypeDataToGrid()

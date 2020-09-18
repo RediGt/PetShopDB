@@ -301,6 +301,7 @@
             this.comBoxMainClient.Name = "comBoxMainClient";
             this.comBoxMainClient.Size = new System.Drawing.Size(223, 31);
             this.comBoxMainClient.TabIndex = 41;
+            this.comBoxMainClient.TextChanged += new System.EventHandler(this.comBoxMainClient_TextChanged);
             // 
             // comBoxMainSearch
             // 
@@ -418,6 +419,7 @@
             this.comBoxMainSeller.Name = "comBoxMainSeller";
             this.comBoxMainSeller.Size = new System.Drawing.Size(223, 31);
             this.comBoxMainSeller.TabIndex = 27;
+            this.comBoxMainSeller.TextChanged += new System.EventHandler(this.comBoxMainSeller_TextChanged);
             // 
             // btnMainSell
             // 
