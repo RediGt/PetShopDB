@@ -52,7 +52,6 @@
             this.lblMainPetType = new System.Windows.Forms.Label();
             this.bttExit = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.bttClear = new System.Windows.Forms.Button();
             this.btnMainNew = new System.Windows.Forms.Button();
             this.comBoxMainSeller = new System.Windows.Forms.ComboBox();
             this.btnMainSell = new System.Windows.Forms.Button();
@@ -123,6 +122,9 @@
             this.tBoxPetTypeSearch = new System.Windows.Forms.TextBox();
             this.comBoxMainPetType = new System.Windows.Forms.ComboBox();
             this.btnMainPets = new System.Windows.Forms.Button();
+            this.btnMainCancel = new System.Windows.Forms.Button();
+            this.btnMainOK = new System.Windows.Forms.Button();
+            this.lblOperationWithPets = new System.Windows.Forms.Label();
             this.tabMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridMain)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -136,6 +138,9 @@
             // 
             // tabMain
             // 
+            this.tabMain.Controls.Add(this.lblOperationWithPets);
+            this.tabMain.Controls.Add(this.btnMainCancel);
+            this.tabMain.Controls.Add(this.btnMainOK);
             this.tabMain.Controls.Add(this.btnMainPets);
             this.tabMain.Controls.Add(this.comBoxMainPetType);
             this.tabMain.Controls.Add(this.btnMainPetType);
@@ -154,7 +159,6 @@
             this.tabMain.Controls.Add(this.lblMainPetType);
             this.tabMain.Controls.Add(this.bttExit);
             this.tabMain.Controls.Add(this.label1);
-            this.tabMain.Controls.Add(this.bttClear);
             this.tabMain.Controls.Add(this.btnMainNew);
             this.tabMain.Controls.Add(this.comBoxMainSeller);
             this.tabMain.Controls.Add(this.btnMainSell);
@@ -173,7 +177,7 @@
             // btnMainPetType
             // 
             this.btnMainPetType.Font = new System.Drawing.Font("Book Antiqua", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMainPetType.Location = new System.Drawing.Point(608, 193);
+            this.btnMainPetType.Location = new System.Drawing.Point(608, 189);
             this.btnMainPetType.Name = "btnMainPetType";
             this.btnMainPetType.Size = new System.Drawing.Size(162, 43);
             this.btnMainPetType.TabIndex = 47;
@@ -184,7 +188,7 @@
             // btnMainClients
             // 
             this.btnMainClients.Font = new System.Drawing.Font("Book Antiqua", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMainClients.Location = new System.Drawing.Point(608, 144);
+            this.btnMainClients.Location = new System.Drawing.Point(608, 140);
             this.btnMainClients.Name = "btnMainClients";
             this.btnMainClients.Size = new System.Drawing.Size(162, 43);
             this.btnMainClients.TabIndex = 46;
@@ -195,7 +199,7 @@
             // btnMainStaff
             // 
             this.btnMainStaff.Font = new System.Drawing.Font("Book Antiqua", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMainStaff.Location = new System.Drawing.Point(608, 94);
+            this.btnMainStaff.Location = new System.Drawing.Point(608, 90);
             this.btnMainStaff.Name = "btnMainStaff";
             this.btnMainStaff.Size = new System.Drawing.Size(162, 43);
             this.btnMainStaff.TabIndex = 45;
@@ -271,7 +275,7 @@
             this.comBoxMainStatus.Items.AddRange(new object[] {
             "Available",
             "Sold"});
-            this.comBoxMainStatus.Location = new System.Drawing.Point(172, 145);
+            this.comBoxMainStatus.Location = new System.Drawing.Point(172, 161);
             this.comBoxMainStatus.Name = "comBoxMainStatus";
             this.comBoxMainStatus.Size = new System.Drawing.Size(223, 31);
             this.comBoxMainStatus.TabIndex = 43;
@@ -293,7 +297,7 @@
             this.comBoxMainClient.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comBoxMainClient.Font = new System.Drawing.Font("Book Antiqua", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comBoxMainClient.FormattingEnabled = true;
-            this.comBoxMainClient.Location = new System.Drawing.Point(172, 225);
+            this.comBoxMainClient.Location = new System.Drawing.Point(172, 241);
             this.comBoxMainClient.Name = "comBoxMainClient";
             this.comBoxMainClient.Size = new System.Drawing.Size(223, 31);
             this.comBoxMainClient.TabIndex = 41;
@@ -321,7 +325,7 @@
             // 
             this.lblMainClient.AutoSize = true;
             this.lblMainClient.Font = new System.Drawing.Font("Book Antiqua", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMainClient.Location = new System.Drawing.Point(89, 227);
+            this.lblMainClient.Location = new System.Drawing.Point(89, 243);
             this.lblMainClient.Name = "lblMainClient";
             this.lblMainClient.Size = new System.Drawing.Size(71, 23);
             this.lblMainClient.TabIndex = 42;
@@ -341,23 +345,25 @@
             // tBoxMainDescription
             // 
             this.tBoxMainDescription.Font = new System.Drawing.Font("Book Antiqua", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tBoxMainDescription.Location = new System.Drawing.Point(172, 63);
+            this.tBoxMainDescription.Location = new System.Drawing.Point(172, 81);
             this.tBoxMainDescription.Name = "tBoxMainDescription";
+            this.tBoxMainDescription.ReadOnly = true;
             this.tBoxMainDescription.Size = new System.Drawing.Size(223, 31);
             this.tBoxMainDescription.TabIndex = 24;
             // 
             // tBoxMainPetName
             // 
             this.tBoxMainPetName.Font = new System.Drawing.Font("Book Antiqua", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tBoxMainPetName.Location = new System.Drawing.Point(172, 104);
+            this.tBoxMainPetName.Location = new System.Drawing.Point(172, 121);
             this.tBoxMainPetName.Name = "tBoxMainPetName";
             this.tBoxMainPetName.Size = new System.Drawing.Size(223, 31);
             this.tBoxMainPetName.TabIndex = 25;
+            this.tBoxMainPetName.TextChanged += new System.EventHandler(this.tBoxMainPetName_TextChanged);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(311, 216);
+            this.label3.Location = new System.Drawing.Point(311, 232);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(0, 13);
             this.label3.TabIndex = 40;
@@ -366,7 +372,7 @@
             // 
             this.lblMainPetType.AutoSize = true;
             this.lblMainPetType.Font = new System.Drawing.Font("Book Antiqua", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMainPetType.Location = new System.Drawing.Point(66, 28);
+            this.lblMainPetType.Location = new System.Drawing.Point(66, 44);
             this.lblMainPetType.Name = "lblMainPetType";
             this.lblMainPetType.Size = new System.Drawing.Size(94, 23);
             this.lblMainPetType.TabIndex = 30;
@@ -375,7 +381,7 @@
             // bttExit
             // 
             this.bttExit.Font = new System.Drawing.Font("Book Antiqua", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bttExit.Location = new System.Drawing.Point(431, 192);
+            this.bttExit.Location = new System.Drawing.Point(431, 188);
             this.bttExit.Name = "bttExit";
             this.bttExit.Size = new System.Drawing.Size(162, 43);
             this.bttExit.TabIndex = 37;
@@ -386,27 +392,15 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(311, 179);
+            this.label1.Location = new System.Drawing.Point(311, 195);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(0, 13);
             this.label1.TabIndex = 0;
             // 
-            // bttClear
-            // 
-            this.bttClear.Font = new System.Drawing.Font("Book Antiqua", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bttClear.Location = new System.Drawing.Point(431, 143);
-            this.bttClear.Name = "bttClear";
-            this.bttClear.Size = new System.Drawing.Size(162, 43);
-            this.bttClear.TabIndex = 36;
-            this.bttClear.Text = "CLEAR FIELDS";
-            this.bttClear.UseVisualStyleBackColor = true;
-            this.bttClear.Visible = false;
-            this.bttClear.Click += new System.EventHandler(this.bttClear_Click);
-            // 
             // btnMainNew
             // 
             this.btnMainNew.Font = new System.Drawing.Font("Book Antiqua", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMainNew.Location = new System.Drawing.Point(431, 44);
+            this.btnMainNew.Location = new System.Drawing.Point(431, 40);
             this.btnMainNew.Name = "btnMainNew";
             this.btnMainNew.Size = new System.Drawing.Size(162, 43);
             this.btnMainNew.TabIndex = 28;
@@ -420,7 +414,7 @@
             this.comBoxMainSeller.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comBoxMainSeller.Font = new System.Drawing.Font("Book Antiqua", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comBoxMainSeller.FormattingEnabled = true;
-            this.comBoxMainSeller.Location = new System.Drawing.Point(172, 185);
+            this.comBoxMainSeller.Location = new System.Drawing.Point(172, 201);
             this.comBoxMainSeller.Name = "comBoxMainSeller";
             this.comBoxMainSeller.Size = new System.Drawing.Size(223, 31);
             this.comBoxMainSeller.TabIndex = 27;
@@ -428,7 +422,7 @@
             // btnMainSell
             // 
             this.btnMainSell.Font = new System.Drawing.Font("Book Antiqua", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMainSell.Location = new System.Drawing.Point(431, 94);
+            this.btnMainSell.Location = new System.Drawing.Point(431, 90);
             this.btnMainSell.Name = "btnMainSell";
             this.btnMainSell.Size = new System.Drawing.Size(162, 43);
             this.btnMainSell.TabIndex = 29;
@@ -441,7 +435,7 @@
             // 
             this.lblMainDescription.AutoSize = true;
             this.lblMainDescription.Font = new System.Drawing.Font("Book Antiqua", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMainDescription.Location = new System.Drawing.Point(11, 67);
+            this.lblMainDescription.Location = new System.Drawing.Point(11, 83);
             this.lblMainDescription.Name = "lblMainDescription";
             this.lblMainDescription.Size = new System.Drawing.Size(149, 23);
             this.lblMainDescription.TabIndex = 34;
@@ -451,7 +445,7 @@
             // 
             this.lblMainStatus.AutoSize = true;
             this.lblMainStatus.Font = new System.Drawing.Font("Book Antiqua", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMainStatus.Location = new System.Drawing.Point(89, 150);
+            this.lblMainStatus.Location = new System.Drawing.Point(89, 166);
             this.lblMainStatus.Name = "lblMainStatus";
             this.lblMainStatus.Size = new System.Drawing.Size(71, 23);
             this.lblMainStatus.TabIndex = 33;
@@ -461,7 +455,7 @@
             // 
             this.lblMainName.AutoSize = true;
             this.lblMainName.Font = new System.Drawing.Font("Book Antiqua", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMainName.Location = new System.Drawing.Point(57, 109);
+            this.lblMainName.Location = new System.Drawing.Point(57, 125);
             this.lblMainName.Name = "lblMainName";
             this.lblMainName.Size = new System.Drawing.Size(103, 23);
             this.lblMainName.TabIndex = 32;
@@ -471,7 +465,7 @@
             // 
             this.lblMainSeller.AutoSize = true;
             this.lblMainSeller.Font = new System.Drawing.Font("Book Antiqua", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMainSeller.Location = new System.Drawing.Point(92, 190);
+            this.lblMainSeller.Location = new System.Drawing.Point(92, 206);
             this.lblMainSeller.Name = "lblMainSeller";
             this.lblMainSeller.Size = new System.Drawing.Size(68, 23);
             this.lblMainSeller.TabIndex = 31;
@@ -1135,21 +1129,57 @@
             this.comBoxMainPetType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comBoxMainPetType.Font = new System.Drawing.Font("Book Antiqua", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comBoxMainPetType.FormattingEnabled = true;
-            this.comBoxMainPetType.Location = new System.Drawing.Point(172, 26);
+            this.comBoxMainPetType.Location = new System.Drawing.Point(172, 42);
             this.comBoxMainPetType.Name = "comBoxMainPetType";
             this.comBoxMainPetType.Size = new System.Drawing.Size(223, 31);
             this.comBoxMainPetType.TabIndex = 48;
+            this.comBoxMainPetType.TextChanged += new System.EventHandler(this.comBoxMainPetType_TextChanged);
             // 
             // btnMainPets
             // 
             this.btnMainPets.Font = new System.Drawing.Font("Book Antiqua", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMainPets.Location = new System.Drawing.Point(608, 44);
+            this.btnMainPets.Location = new System.Drawing.Point(608, 40);
             this.btnMainPets.Name = "btnMainPets";
             this.btnMainPets.Size = new System.Drawing.Size(162, 43);
             this.btnMainPets.TabIndex = 49;
             this.btnMainPets.Text = "Pets";
             this.btnMainPets.UseVisualStyleBackColor = true;
             this.btnMainPets.Click += new System.EventHandler(this.btnMainPets_Click);
+            // 
+            // btnMainCancel
+            // 
+            this.btnMainCancel.Font = new System.Drawing.Font("Book Antiqua", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMainCancel.Location = new System.Drawing.Point(518, 141);
+            this.btnMainCancel.Name = "btnMainCancel";
+            this.btnMainCancel.Size = new System.Drawing.Size(75, 43);
+            this.btnMainCancel.TabIndex = 60;
+            this.btnMainCancel.Text = "Cancel";
+            this.btnMainCancel.UseVisualStyleBackColor = true;
+            this.btnMainCancel.Visible = false;
+            this.btnMainCancel.Click += new System.EventHandler(this.btnMainCancel_Click);
+            // 
+            // btnMainOK
+            // 
+            this.btnMainOK.Font = new System.Drawing.Font("Book Antiqua", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMainOK.Location = new System.Drawing.Point(431, 140);
+            this.btnMainOK.Name = "btnMainOK";
+            this.btnMainOK.Size = new System.Drawing.Size(72, 43);
+            this.btnMainOK.TabIndex = 59;
+            this.btnMainOK.Text = "OK";
+            this.btnMainOK.UseVisualStyleBackColor = true;
+            this.btnMainOK.Visible = false;
+            this.btnMainOK.Click += new System.EventHandler(this.btnMainOK_Click);
+            // 
+            // lblOperationWithPets
+            // 
+            this.lblOperationWithPets.AutoSize = true;
+            this.lblOperationWithPets.Font = new System.Drawing.Font("Book Antiqua", 15.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblOperationWithPets.Location = new System.Drawing.Point(22, 10);
+            this.lblOperationWithPets.Name = "lblOperationWithPets";
+            this.lblOperationWithPets.Size = new System.Drawing.Size(216, 26);
+            this.lblOperationWithPets.TabIndex = 61;
+            this.lblOperationWithPets.Text = "lblOperationWithPets";
+            this.lblOperationWithPets.Visible = false;
             // 
             // PetShopForm
             // 
@@ -1193,7 +1223,6 @@
         private System.Windows.Forms.Label lblMainPetType;
         private System.Windows.Forms.Button bttExit;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button bttClear;
         private System.Windows.Forms.Button btnMainNew;
         private System.Windows.Forms.ComboBox comBoxMainSeller;
         private System.Windows.Forms.Button btnMainSell;
@@ -1274,6 +1303,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
         private System.Windows.Forms.ComboBox comBoxMainPetType;
         private System.Windows.Forms.Button btnMainPets;
+        private System.Windows.Forms.Button btnMainCancel;
+        private System.Windows.Forms.Button btnMainOK;
+        private System.Windows.Forms.Label lblOperationWithPets;
     }
 }
 

@@ -17,6 +17,7 @@ namespace TaskSQL
         private List<Staff> staff = new List<Staff>();
         private List<Clients> clients = new List<Clients>();
         Connections con = new Connections();
+        PictureBox banner;
 
         public PetShopForm()
         {
@@ -35,7 +36,7 @@ namespace TaskSQL
 
         private void InitializeBanner()
         {
-            PictureBox banner = new PictureBox();
+            banner = new PictureBox();
             banner.BackColor = Color.Transparent;
             banner.Size = new Size(350, 200);
             banner.Location = new Point(50, 30);
@@ -124,8 +125,12 @@ namespace TaskSQL
         }
 
         private void bttNew_Click(object sender, EventArgs e)
-        {
-            if (comBoxMainPetType.Text != "" && tBoxMainPetName.Text != "" && comBoxMainStatus.Text != "")
+        {          
+            VisiblizeMainBoxesForNew();
+            lblOperationWithPets.Text = "Insert new pet data :";
+            lblOperationWithPets.Visible = true;
+
+            /*if (comBoxMainPetType.Text != "" && tBoxMainPetName.Text != "" && comBoxMainStatus.Text != "")
             {
                 Pets newPet = new Pets((pets.Count + 1).ToString(), comBoxMainPetType.Text, tBoxMainDescription.Text, tBoxMainPetName.Text,
                     comBoxMainStatus.Text, "", "", "", "");
@@ -136,7 +141,67 @@ namespace TaskSQL
                 PetDataToGrid();
                 ClearBoxesInMain();
                 con.AddNewPet(pets, petTypeId);
+            }*/
+        }
+
+        private void comBoxMainPetType_TextChanged(object sender, EventArgs e)
+        {
+            if (comBoxMainPetType.Text != "")
+            {
+                tBoxMainDescription.Text = petType[comBoxMainPetType.SelectedIndex].description;
             }
+            else
+                tBoxMainDescription.Text = "";
+
+            PetDataFilledCheck();
+        }
+
+        private void tBoxMainPetName_TextChanged(object sender, EventArgs e)
+        {
+            PetDataFilledCheck();
+        }
+
+        private void PetDataFilledCheck()
+        {
+            if (comBoxMainPetType.Text != "" &&
+                tBoxMainPetName.Text != "")
+            {
+                btnMainOK.Visible = true;
+                btnMainCancel.Visible = true;
+            }
+            else
+            {
+                btnMainOK.Visible = false;
+                btnMainCancel.Visible = false;
+            }
+        }
+
+        private void btnMainOK_Click(object sender, EventArgs e)
+        {
+            if (lblOperationWithPets.Text == "Insert new pet data :")
+                InsertNewPet();
+            //if (lblOperationWithStaff.Text == "Edit employee data :")
+            //    EditStaff();
+        }
+
+        private void InsertNewPet()
+        {
+            Pets newPet = new Pets((pets.Count + 1).ToString(), comBoxMainPetType.Text, tBoxMainDescription.Text, tBoxMainPetName.Text,
+                    "Available", "", "", "", "");
+            pets.Add(newPet);
+            string petTypeId = SearchForPetTypeId();
+            //MessageBox.Show("petTypeID = " + petTypeId);
+
+            PetDataToGrid();
+            ClearBoxesInMain();
+            HideBoxesInMain();
+            con.AddNewPet(pets, petTypeId, lblOperationWithPets);
+        }    
+
+        private void btnMainCancel_Click(object sender, EventArgs e)
+        {
+            ClearBoxesInMain();
+            HideBoxesInMain();
         }
 
         private string SearchForPetTypeId()
@@ -200,7 +265,7 @@ namespace TaskSQL
 
         private void ClearBoxesInMain()
         {
-            comBoxMainPetType.Text = "";
+            comBoxMainPetType.SelectedIndex = -1;
             tBoxMainDescription.Text = "";
             tBoxMainPetName.Text = "";
             comBoxMainStatus.SelectedIndex = -1;
@@ -222,6 +287,30 @@ namespace TaskSQL
             comBoxMainStatus.Visible = false;
             comBoxMainSeller.Visible = false;
             comBoxMainClient.Visible = false;
+        }
+
+        private void VisiblizeMainBoxesForNew()
+        {
+            lblMainPetType.Visible = true;
+            lblMainDescription.Visible = true;
+            lblMainName.Visible = true;
+            comBoxMainPetType.Visible = true;
+            tBoxMainDescription.Visible = true;
+            tBoxMainPetName.Visible = true;
+
+            
+            banner.Visible = false;
+        }
+
+        private void VisiblizeMainBoxesForSell()
+        {
+            VisiblizeMainBoxesForNew();
+            lblMainStatus.Visible = true;
+            lblMainSeller.Visible = true;
+            lblMainClient.Visible = true;
+            comBoxMainStatus.Visible = true;
+            comBoxMainSeller.Visible = true;
+            comBoxMainClient.Visible = true;
         }
 
         private void bttClear_Click(object sender, EventArgs e)

@@ -100,7 +100,7 @@ namespace TaskSQL
             return pets;
         }
       
-        public void AddNewPet(List<Pets> newPets, string petTypeId)
+        public void AddNewPet(List<Pets> newPets, string petTypeId, Label label)
         {
             string query = "INSERT INTO pets (PetName, PetTypeID, PetStatus) " +
                 "VALUES ('" + newPets[newPets.Count - 1].name + "'," + 
@@ -112,11 +112,11 @@ namespace TaskSQL
                 MySqlCommand cmd = new MySqlCommand(query, connection);
                 cmd.ExecuteNonQuery();   
                 this.Close();
-                MessageBox.Show("Data Stored Successfully");
+                label.Text = "Data Stored Successfully";
             }
             else
             {
-                MessageBox.Show("Error");
+                label.Text = "Error";
             }
         }
 
