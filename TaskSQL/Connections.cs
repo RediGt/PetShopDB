@@ -322,12 +322,23 @@ namespace TaskSQL
 
 #region PetType Connection Sector
         //Load Pet-Type Data from DB
-        public List<PetType> LoadSqlPetType()
+        public List<PetType> LoadSqlPetType(string chosenParameter, string searchText)
         {
             List<PetType> petType = new List<PetType>();
 
             string query = "SELECT pettype.PetTypeID, pettype.PetType, pettype.PetDescription " +
                            "FROM pettype";
+            switch (chosenParameter)
+            {
+                case "Pet Id":
+                    query += " WHERE pettype.PetTypeID LIKE '" + searchText + "%'";
+                    break;
+                case "Pet Type":
+                    query += " WHERE pettype.PetType LIKE '" + searchText + "%'";
+                    break;
+                default:
+                    break;
+            }
 
             if (this.Open() == true)
             {

@@ -21,13 +21,34 @@ namespace TaskSQL
         public PetShopForm()
         {
             InitializeComponent();
+            InitializeBanner();
             LoadAllDataFromDB();
         }
-        
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            tabControl1.TabPages.Remove(tabStaff);
+            tabControl1.TabPages.Remove(tabClients);
+            tabControl1.TabPages.Remove(tabPetType);
+            HideBoxesInMain();
+        }
+
+        private void InitializeBanner()
+        {
+            PictureBox banner = new PictureBox();
+            banner.BackColor = Color.Transparent;
+            banner.Size = new Size(350, 200);
+            banner.Location = new Point(50, 30);
+            banner.Image = Properties.Resources.LogoSavana;
+            banner.SizeMode = PictureBoxSizeMode.StretchImage;
+
+            tabMain.Controls.Add(banner);
+        }
+
         private void LoadAllDataFromDB()
         {
             pets = con.LoadSqlPets("Show all", "");
-            petType = con.LoadSqlPetType();
+            petType = con.LoadSqlPetType("Show all", "");
             staff = con.LoadSqlStaff("Show all", "");
             clients = con.LoadSqlClients("Show all", "");
 
@@ -42,6 +63,10 @@ namespace TaskSQL
             if (clients != null)
             {
                 InitializeComboClientsInMain();
+            }
+            if (petType != null)
+            {
+                InitializeComboPetTypeInMain();
             }
         }
         
@@ -63,28 +88,47 @@ namespace TaskSQL
 
         private void InitializeComboSellerInMain()
         {           
-            comboSeller.Items.Clear();           
+            comBoxMainSeller.Items.Clear();           
             foreach (var seller in staff)
             {
-                comboSeller.Items.Add(seller.staffFirstName + " " + seller.staffLastName);
+                comBoxMainSeller.Items.Add(seller.staffFirstName + " " + seller.staffLastName);
             }
         }
 
         private void InitializeComboClientsInMain()
         {
-            comboClient.Items.Clear();
+            comBoxMainClient.Items.Clear();
             foreach (var client in clients)
             {
-                comboClient.Items.Add(client.clientFirstName + " " + client.clientLastName);
+                comBoxMainClient.Items.Add(client.clientFirstName + " " + client.clientLastName);
             }
+        }
+
+        private void InitializeComboPetTypeInMain()
+        {
+            comBoxMainPetType.Items.Clear();
+            foreach (var type in petType)
+            {
+                comBoxMainPetType.Items.Add(type.type);
+            }
+        }
+
+        private void btnMainPets_Click(object sender, EventArgs e)
+        {
+            dataGridMain.Visible = true;
+            label6.Visible = true;
+            comBoxMainSearch.Visible = true;
+            tBoxMainSearch.Visible = true;
+            btnMainNew.Visible = true;
+            btnMainSell.Visible = true;
         }
 
         private void bttNew_Click(object sender, EventArgs e)
         {
-            if (tBoxType.Text != "" && tBoxName.Text != "" && comboStatus.Text != "")
+            if (comBoxMainPetType.Text != "" && tBoxMainPetName.Text != "" && comBoxMainStatus.Text != "")
             {
-                Pets newPet = new Pets((pets.Count + 1).ToString(), tBoxType.Text, tBoxDescription.Text, tBoxName.Text,
-                    comboStatus.Text, "", "", "", "");
+                Pets newPet = new Pets((pets.Count + 1).ToString(), comBoxMainPetType.Text, tBoxMainDescription.Text, tBoxMainPetName.Text,
+                    comBoxMainStatus.Text, "", "", "", "");
                 pets.Add(newPet);
                 string petTypeId = SearchForPetTypeId();
                 MessageBox.Show("petTypeID = " + petTypeId);
@@ -100,7 +144,7 @@ namespace TaskSQL
             string petTypeId = "";
             for (int i = 0; i < petType.Count; i++)
             {
-                if (tBoxType.Text == petType[i].type)
+                if (comBoxMainPetType.Text == petType[i].type)
                 {
                     petTypeId = petType[i].typeId;
                     break;
@@ -111,12 +155,12 @@ namespace TaskSQL
 
         private void FromGrigToBoxesInMain()
         {
-            tBoxType.Text = dataGridMain.SelectedRows[0].Cells[1].Value.ToString();
-            tBoxDescription.Text = dataGridMain.SelectedRows[0].Cells[2].Value.ToString();
-            tBoxName.Text = dataGridMain.SelectedRows[0].Cells[3].Value.ToString();
-            comboStatus.Text = dataGridMain.SelectedRows[0].Cells[4].Value.ToString();
-            comboSeller.Text = dataGridMain.SelectedRows[0].Cells[5].Value.ToString();
-            comboClient.Text = dataGridMain.SelectedRows[0].Cells[6].Value.ToString();
+            comBoxMainPetType.Text = dataGridMain.SelectedRows[0].Cells[1].Value.ToString();
+            tBoxMainDescription.Text = dataGridMain.SelectedRows[0].Cells[2].Value.ToString();
+            tBoxMainPetName.Text = dataGridMain.SelectedRows[0].Cells[3].Value.ToString();
+            comBoxMainStatus.Text = dataGridMain.SelectedRows[0].Cells[4].Value.ToString();
+            comBoxMainSeller.Text = dataGridMain.SelectedRows[0].Cells[5].Value.ToString();
+            comBoxMainClient.Text = dataGridMain.SelectedRows[0].Cells[6].Value.ToString();
         }
 
         private void dataGridMain_MouseClick(object sender, MouseEventArgs e)
@@ -125,34 +169,24 @@ namespace TaskSQL
             FromGrigToBoxesInMain();
         }
 
-        private void ClearBoxesInMain()
-        {
-            tBoxType.Text = "";
-            tBoxDescription.Text = "";
-            tBoxName.Text = "";
-            comboStatus.SelectedIndex = -1;
-            comboSeller.SelectedIndex = -1;
-            comboClient.SelectedIndex = -1;
-        }
-
         private void bttSell_Click(object sender, EventArgs e)
         {
-            if (comboStatus.Text == "Sold")
+            if (comBoxMainStatus.Text == "Sold")
             {
                 MessageBox.Show("The Pet has been already Sold!");
                 return;
             }
 
-            if (comboStatus.Text == "Available" && comboSeller.Text != "" &&
-                comboClient.Text != "")
+            if (comBoxMainStatus.Text == "Available" && comBoxMainSeller.Text != "" &&
+                comBoxMainClient.Text != "")
             {
-                comboStatus.Text = "Sold";
+                comBoxMainStatus.Text = "Sold";
                 int selectedPetIndex = dataGridMain.SelectedRows[0].Index;
                 int petId = Convert.ToInt32(pets[selectedPetIndex].id);
-                int sellerId = Convert.ToInt32(comboSeller.SelectedIndex + 1);
-                int clientId = Convert.ToInt32(comboClient.SelectedIndex + 1);
+                int sellerId = Convert.ToInt32(comBoxMainSeller.SelectedIndex + 1);
+                int clientId = Convert.ToInt32(comBoxMainClient.SelectedIndex + 1);
 
-                pets[selectedPetIndex].status = comboStatus.Text;
+                pets[selectedPetIndex].status = comBoxMainStatus.Text;
                 pets[selectedPetIndex].staffFirstName = staff[sellerId - 1].staffFirstName;
                 pets[selectedPetIndex].staffLastName = staff[sellerId - 1].staffLastName;
                 pets[selectedPetIndex].clientFirstName = clients[clientId - 1].clientFirstName;
@@ -162,6 +196,32 @@ namespace TaskSQL
                 PetDataToGrid();
                 con.SellPet(petId, sellerId, clientId);
             }
+        }
+
+        private void ClearBoxesInMain()
+        {
+            comBoxMainPetType.Text = "";
+            tBoxMainDescription.Text = "";
+            tBoxMainPetName.Text = "";
+            comBoxMainStatus.SelectedIndex = -1;
+            comBoxMainSeller.SelectedIndex = -1;
+            comBoxMainClient.SelectedIndex = -1;
+        }
+
+        private void HideBoxesInMain()
+        {
+            lblMainPetType.Visible = false;
+            lblMainDescription.Visible = false;
+            lblMainName.Visible = false;
+            lblMainStatus.Visible = false;
+            lblMainSeller.Visible = false;
+            lblMainClient.Visible = false;
+            comBoxMainPetType.Visible = false;
+            tBoxMainDescription.Visible = false;
+            tBoxMainPetName.Visible = false;
+            comBoxMainStatus.Visible = false;
+            comBoxMainSeller.Visible = false;
+            comBoxMainClient.Visible = false;
         }
 
         private void bttClear_Click(object sender, EventArgs e)
@@ -188,13 +248,6 @@ namespace TaskSQL
         private void bttExit_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            tabControl1.TabPages.Remove(tabStaff);
-            tabControl1.TabPages.Remove(tabClients);
-            tabControl1.TabPages.Remove(tabPetType);
         }
 
         private void btnStaff_Click(object sender, EventArgs e)
@@ -654,7 +707,7 @@ namespace TaskSQL
             ClearPetTypeBoxes();
             HidePetTypeBoxes();
             con.AddNewPetType(petType, lblOperationWithPetType);
-            //InitializeComboClientsInMain();
+            InitializeComboPetTypeInMain();
         }
 
         private void EditPetType()
@@ -670,14 +723,14 @@ namespace TaskSQL
             con.EditPetType(petType, selectedPetTypeIndex, lblOperationWithPetType);
 
             pets = con.LoadSqlPets("Show all", "");
-            //InitializeComboClientsInMain();
+            InitializeComboPetTypeInMain();
             PetDataToGrid();
         }
 
         private void ClearPetTypeBoxes()
         {
             tBoxPetTypeType.Text = "";
-            tBoxDescription.Text = "";
+            tBoxMainDescription.Text = "";
         }
 
         private void HidePetTypeBoxes()
@@ -724,6 +777,23 @@ namespace TaskSQL
             tBoxPetTypeType.Text = dataGridPetType.SelectedRows[0].Cells[1].Value.ToString();
             tBoxPetTypeDescription.Text = dataGridPetType.SelectedRows[0].Cells[2].Value.ToString();
         }
+
+        private void tBoxPetTypeSearch_TextChanged(object sender, EventArgs e)
+        {
+            petType = con.LoadSqlPetType(comBoxPetTypeSearch.Text, tBoxPetTypeSearch.Text);
+
+            if (petType != null)
+            {
+                PetTypeDataToGrid();
+            }
+        }
+
+        private void comBoxPetTypeSearch_TextChanged(object sender, EventArgs e)
+        {
+            tBoxPetTypeSearch.Text = "";
+            petType = con.LoadSqlPetType("Show all", "");
+        }
         #endregion
+
     }
 }

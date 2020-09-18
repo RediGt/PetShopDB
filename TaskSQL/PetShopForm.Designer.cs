@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.tabMain = new System.Windows.Forms.TabPage();
-            this.btnPets = new System.Windows.Forms.Button();
-            this.btnClients = new System.Windows.Forms.Button();
-            this.btnStaff = new System.Windows.Forms.Button();
+            this.btnMainPetType = new System.Windows.Forms.Button();
+            this.btnMainClients = new System.Windows.Forms.Button();
+            this.btnMainStaff = new System.Windows.Forms.Button();
             this.dataGridMain = new System.Windows.Forms.DataGridView();
             this.PetID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PetType1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -40,27 +40,26 @@
             this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Seller = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Buyer = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.comboStatus = new System.Windows.Forms.ComboBox();
+            this.comBoxMainStatus = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.comboClient = new System.Windows.Forms.ComboBox();
+            this.comBoxMainClient = new System.Windows.Forms.ComboBox();
             this.comBoxMainSearch = new System.Windows.Forms.ComboBox();
-            this.lblClient = new System.Windows.Forms.Label();
+            this.lblMainClient = new System.Windows.Forms.Label();
             this.tBoxMainSearch = new System.Windows.Forms.TextBox();
-            this.tBoxType = new System.Windows.Forms.TextBox();
-            this.tBoxDescription = new System.Windows.Forms.TextBox();
-            this.tBoxName = new System.Windows.Forms.TextBox();
+            this.tBoxMainDescription = new System.Windows.Forms.TextBox();
+            this.tBoxMainPetName = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.lblPetType = new System.Windows.Forms.Label();
+            this.lblMainPetType = new System.Windows.Forms.Label();
             this.bttExit = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.bttClear = new System.Windows.Forms.Button();
-            this.bttNew = new System.Windows.Forms.Button();
-            this.comboSeller = new System.Windows.Forms.ComboBox();
-            this.bttSell = new System.Windows.Forms.Button();
-            this.lblDescription = new System.Windows.Forms.Label();
-            this.lblStatus = new System.Windows.Forms.Label();
-            this.lblName = new System.Windows.Forms.Label();
-            this.lblSeller = new System.Windows.Forms.Label();
+            this.btnMainNew = new System.Windows.Forms.Button();
+            this.comBoxMainSeller = new System.Windows.Forms.ComboBox();
+            this.btnMainSell = new System.Windows.Forms.Button();
+            this.lblMainDescription = new System.Windows.Forms.Label();
+            this.lblMainStatus = new System.Windows.Forms.Label();
+            this.lblMainName = new System.Windows.Forms.Label();
+            this.lblMainSeller = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabStaff = new System.Windows.Forms.TabPage();
             this.lblOperationWithStaff = new System.Windows.Forms.Label();
@@ -122,6 +121,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.comBoxPetTypeSearch = new System.Windows.Forms.ComboBox();
             this.tBoxPetTypeSearch = new System.Windows.Forms.TextBox();
+            this.comBoxMainPetType = new System.Windows.Forms.ComboBox();
+            this.btnMainPets = new System.Windows.Forms.Button();
             this.tabMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridMain)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -135,31 +136,32 @@
             // 
             // tabMain
             // 
-            this.tabMain.Controls.Add(this.btnPets);
-            this.tabMain.Controls.Add(this.btnClients);
-            this.tabMain.Controls.Add(this.btnStaff);
+            this.tabMain.Controls.Add(this.btnMainPets);
+            this.tabMain.Controls.Add(this.comBoxMainPetType);
+            this.tabMain.Controls.Add(this.btnMainPetType);
+            this.tabMain.Controls.Add(this.btnMainClients);
+            this.tabMain.Controls.Add(this.btnMainStaff);
             this.tabMain.Controls.Add(this.dataGridMain);
-            this.tabMain.Controls.Add(this.comboStatus);
+            this.tabMain.Controls.Add(this.comBoxMainStatus);
             this.tabMain.Controls.Add(this.label6);
-            this.tabMain.Controls.Add(this.comboClient);
+            this.tabMain.Controls.Add(this.comBoxMainClient);
             this.tabMain.Controls.Add(this.comBoxMainSearch);
-            this.tabMain.Controls.Add(this.lblClient);
+            this.tabMain.Controls.Add(this.lblMainClient);
             this.tabMain.Controls.Add(this.tBoxMainSearch);
-            this.tabMain.Controls.Add(this.tBoxType);
-            this.tabMain.Controls.Add(this.tBoxDescription);
-            this.tabMain.Controls.Add(this.tBoxName);
+            this.tabMain.Controls.Add(this.tBoxMainDescription);
+            this.tabMain.Controls.Add(this.tBoxMainPetName);
             this.tabMain.Controls.Add(this.label3);
-            this.tabMain.Controls.Add(this.lblPetType);
+            this.tabMain.Controls.Add(this.lblMainPetType);
             this.tabMain.Controls.Add(this.bttExit);
             this.tabMain.Controls.Add(this.label1);
             this.tabMain.Controls.Add(this.bttClear);
-            this.tabMain.Controls.Add(this.bttNew);
-            this.tabMain.Controls.Add(this.comboSeller);
-            this.tabMain.Controls.Add(this.bttSell);
-            this.tabMain.Controls.Add(this.lblDescription);
-            this.tabMain.Controls.Add(this.lblStatus);
-            this.tabMain.Controls.Add(this.lblName);
-            this.tabMain.Controls.Add(this.lblSeller);
+            this.tabMain.Controls.Add(this.btnMainNew);
+            this.tabMain.Controls.Add(this.comBoxMainSeller);
+            this.tabMain.Controls.Add(this.btnMainSell);
+            this.tabMain.Controls.Add(this.lblMainDescription);
+            this.tabMain.Controls.Add(this.lblMainStatus);
+            this.tabMain.Controls.Add(this.lblMainName);
+            this.tabMain.Controls.Add(this.lblMainSeller);
             this.tabMain.Location = new System.Drawing.Point(4, 22);
             this.tabMain.Name = "tabMain";
             this.tabMain.Padding = new System.Windows.Forms.Padding(3);
@@ -168,38 +170,38 @@
             this.tabMain.Text = "Main";
             this.tabMain.UseVisualStyleBackColor = true;
             // 
-            // btnPets
+            // btnMainPetType
             // 
-            this.btnPets.Font = new System.Drawing.Font("Book Antiqua", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPets.Location = new System.Drawing.Point(608, 122);
-            this.btnPets.Name = "btnPets";
-            this.btnPets.Size = new System.Drawing.Size(162, 43);
-            this.btnPets.TabIndex = 47;
-            this.btnPets.Text = "Pets";
-            this.btnPets.UseVisualStyleBackColor = true;
-            this.btnPets.Click += new System.EventHandler(this.btnPetType_Click);
+            this.btnMainPetType.Font = new System.Drawing.Font("Book Antiqua", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMainPetType.Location = new System.Drawing.Point(608, 193);
+            this.btnMainPetType.Name = "btnMainPetType";
+            this.btnMainPetType.Size = new System.Drawing.Size(162, 43);
+            this.btnMainPetType.TabIndex = 47;
+            this.btnMainPetType.Text = "Pet Type";
+            this.btnMainPetType.UseVisualStyleBackColor = true;
+            this.btnMainPetType.Click += new System.EventHandler(this.btnPetType_Click);
             // 
-            // btnClients
+            // btnMainClients
             // 
-            this.btnClients.Font = new System.Drawing.Font("Book Antiqua", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClients.Location = new System.Drawing.Point(608, 73);
-            this.btnClients.Name = "btnClients";
-            this.btnClients.Size = new System.Drawing.Size(162, 43);
-            this.btnClients.TabIndex = 46;
-            this.btnClients.Text = "Clients";
-            this.btnClients.UseVisualStyleBackColor = true;
-            this.btnClients.Click += new System.EventHandler(this.btnClients_Click);
+            this.btnMainClients.Font = new System.Drawing.Font("Book Antiqua", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMainClients.Location = new System.Drawing.Point(608, 144);
+            this.btnMainClients.Name = "btnMainClients";
+            this.btnMainClients.Size = new System.Drawing.Size(162, 43);
+            this.btnMainClients.TabIndex = 46;
+            this.btnMainClients.Text = "Clients";
+            this.btnMainClients.UseVisualStyleBackColor = true;
+            this.btnMainClients.Click += new System.EventHandler(this.btnClients_Click);
             // 
-            // btnStaff
+            // btnMainStaff
             // 
-            this.btnStaff.Font = new System.Drawing.Font("Book Antiqua", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnStaff.Location = new System.Drawing.Point(608, 23);
-            this.btnStaff.Name = "btnStaff";
-            this.btnStaff.Size = new System.Drawing.Size(162, 43);
-            this.btnStaff.TabIndex = 45;
-            this.btnStaff.Text = "Staff";
-            this.btnStaff.UseVisualStyleBackColor = true;
-            this.btnStaff.Click += new System.EventHandler(this.btnStaff_Click);
+            this.btnMainStaff.Font = new System.Drawing.Font("Book Antiqua", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMainStaff.Location = new System.Drawing.Point(608, 94);
+            this.btnMainStaff.Name = "btnMainStaff";
+            this.btnMainStaff.Size = new System.Drawing.Size(162, 43);
+            this.btnMainStaff.TabIndex = 45;
+            this.btnMainStaff.Text = "Staff";
+            this.btnMainStaff.UseVisualStyleBackColor = true;
+            this.btnMainStaff.Click += new System.EventHandler(this.btnStaff_Click);
             // 
             // dataGridMain
             // 
@@ -218,6 +220,7 @@
             this.dataGridMain.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridMain.Size = new System.Drawing.Size(747, 339);
             this.dataGridMain.TabIndex = 35;
+            this.dataGridMain.Visible = false;
             this.dataGridMain.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dataGridMain_MouseClick);
             // 
             // PetID
@@ -260,18 +263,18 @@
             this.Buyer.HeaderText = "Buyer";
             this.Buyer.Name = "Buyer";
             // 
-            // comboStatus
+            // comBoxMainStatus
             // 
-            this.comboStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboStatus.Font = new System.Drawing.Font("Book Antiqua", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboStatus.FormattingEnabled = true;
-            this.comboStatus.Items.AddRange(new object[] {
+            this.comBoxMainStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comBoxMainStatus.Font = new System.Drawing.Font("Book Antiqua", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comBoxMainStatus.FormattingEnabled = true;
+            this.comBoxMainStatus.Items.AddRange(new object[] {
             "Available",
             "Sold"});
-            this.comboStatus.Location = new System.Drawing.Point(172, 145);
-            this.comboStatus.Name = "comboStatus";
-            this.comboStatus.Size = new System.Drawing.Size(223, 31);
-            this.comboStatus.TabIndex = 43;
+            this.comBoxMainStatus.Location = new System.Drawing.Point(172, 145);
+            this.comBoxMainStatus.Name = "comBoxMainStatus";
+            this.comBoxMainStatus.Size = new System.Drawing.Size(223, 31);
+            this.comBoxMainStatus.TabIndex = 43;
             // 
             // label6
             // 
@@ -283,16 +286,17 @@
             this.label6.TabIndex = 44;
             this.label6.Tag = "";
             this.label6.Text = "Search by :";
+            this.label6.Visible = false;
             // 
-            // comboClient
+            // comBoxMainClient
             // 
-            this.comboClient.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboClient.Font = new System.Drawing.Font("Book Antiqua", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboClient.FormattingEnabled = true;
-            this.comboClient.Location = new System.Drawing.Point(172, 225);
-            this.comboClient.Name = "comboClient";
-            this.comboClient.Size = new System.Drawing.Size(223, 31);
-            this.comboClient.TabIndex = 41;
+            this.comBoxMainClient.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comBoxMainClient.Font = new System.Drawing.Font("Book Antiqua", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comBoxMainClient.FormattingEnabled = true;
+            this.comBoxMainClient.Location = new System.Drawing.Point(172, 225);
+            this.comBoxMainClient.Name = "comBoxMainClient";
+            this.comBoxMainClient.Size = new System.Drawing.Size(223, 31);
+            this.comBoxMainClient.TabIndex = 41;
             // 
             // comBoxMainSearch
             // 
@@ -310,18 +314,19 @@
             this.comBoxMainSearch.Name = "comBoxMainSearch";
             this.comBoxMainSearch.Size = new System.Drawing.Size(178, 31);
             this.comBoxMainSearch.TabIndex = 39;
+            this.comBoxMainSearch.Visible = false;
             this.comBoxMainSearch.TextChanged += new System.EventHandler(this.comBoxMainSearch_TextChanged);
             // 
-            // lblClient
+            // lblMainClient
             // 
-            this.lblClient.AutoSize = true;
-            this.lblClient.Font = new System.Drawing.Font("Book Antiqua", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblClient.Location = new System.Drawing.Point(89, 227);
-            this.lblClient.Name = "lblClient";
-            this.lblClient.Size = new System.Drawing.Size(71, 23);
-            this.lblClient.TabIndex = 42;
-            this.lblClient.Tag = "";
-            this.lblClient.Text = "Client :";
+            this.lblMainClient.AutoSize = true;
+            this.lblMainClient.Font = new System.Drawing.Font("Book Antiqua", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMainClient.Location = new System.Drawing.Point(89, 227);
+            this.lblMainClient.Name = "lblMainClient";
+            this.lblMainClient.Size = new System.Drawing.Size(71, 23);
+            this.lblMainClient.TabIndex = 42;
+            this.lblMainClient.Tag = "";
+            this.lblMainClient.Text = "Client :";
             // 
             // tBoxMainSearch
             // 
@@ -330,31 +335,24 @@
             this.tBoxMainSearch.Name = "tBoxMainSearch";
             this.tBoxMainSearch.Size = new System.Drawing.Size(314, 31);
             this.tBoxMainSearch.TabIndex = 38;
+            this.tBoxMainSearch.Visible = false;
             this.tBoxMainSearch.TextChanged += new System.EventHandler(this.tBoxMainSearch_TextChanged);
             // 
-            // tBoxType
+            // tBoxMainDescription
             // 
-            this.tBoxType.Font = new System.Drawing.Font("Book Antiqua", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tBoxType.Location = new System.Drawing.Point(172, 23);
-            this.tBoxType.Name = "tBoxType";
-            this.tBoxType.Size = new System.Drawing.Size(223, 31);
-            this.tBoxType.TabIndex = 23;
+            this.tBoxMainDescription.Font = new System.Drawing.Font("Book Antiqua", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tBoxMainDescription.Location = new System.Drawing.Point(172, 63);
+            this.tBoxMainDescription.Name = "tBoxMainDescription";
+            this.tBoxMainDescription.Size = new System.Drawing.Size(223, 31);
+            this.tBoxMainDescription.TabIndex = 24;
             // 
-            // tBoxDescription
+            // tBoxMainPetName
             // 
-            this.tBoxDescription.Font = new System.Drawing.Font("Book Antiqua", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tBoxDescription.Location = new System.Drawing.Point(172, 63);
-            this.tBoxDescription.Name = "tBoxDescription";
-            this.tBoxDescription.Size = new System.Drawing.Size(223, 31);
-            this.tBoxDescription.TabIndex = 24;
-            // 
-            // tBoxName
-            // 
-            this.tBoxName.Font = new System.Drawing.Font("Book Antiqua", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tBoxName.Location = new System.Drawing.Point(172, 104);
-            this.tBoxName.Name = "tBoxName";
-            this.tBoxName.Size = new System.Drawing.Size(223, 31);
-            this.tBoxName.TabIndex = 25;
+            this.tBoxMainPetName.Font = new System.Drawing.Font("Book Antiqua", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tBoxMainPetName.Location = new System.Drawing.Point(172, 104);
+            this.tBoxMainPetName.Name = "tBoxMainPetName";
+            this.tBoxMainPetName.Size = new System.Drawing.Size(223, 31);
+            this.tBoxMainPetName.TabIndex = 25;
             // 
             // label3
             // 
@@ -364,20 +362,20 @@
             this.label3.Size = new System.Drawing.Size(0, 13);
             this.label3.TabIndex = 40;
             // 
-            // lblPetType
+            // lblMainPetType
             // 
-            this.lblPetType.AutoSize = true;
-            this.lblPetType.Font = new System.Drawing.Font("Book Antiqua", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPetType.Location = new System.Drawing.Point(66, 28);
-            this.lblPetType.Name = "lblPetType";
-            this.lblPetType.Size = new System.Drawing.Size(94, 23);
-            this.lblPetType.TabIndex = 30;
-            this.lblPetType.Text = "Pet Type :";
+            this.lblMainPetType.AutoSize = true;
+            this.lblMainPetType.Font = new System.Drawing.Font("Book Antiqua", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMainPetType.Location = new System.Drawing.Point(66, 28);
+            this.lblMainPetType.Name = "lblMainPetType";
+            this.lblMainPetType.Size = new System.Drawing.Size(94, 23);
+            this.lblMainPetType.TabIndex = 30;
+            this.lblMainPetType.Text = "Pet Type :";
             // 
             // bttExit
             // 
             this.bttExit.Font = new System.Drawing.Font("Book Antiqua", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bttExit.Location = new System.Drawing.Point(431, 171);
+            this.bttExit.Location = new System.Drawing.Point(431, 192);
             this.bttExit.Name = "bttExit";
             this.bttExit.Size = new System.Drawing.Size(162, 43);
             this.bttExit.TabIndex = 37;
@@ -396,86 +394,89 @@
             // bttClear
             // 
             this.bttClear.Font = new System.Drawing.Font("Book Antiqua", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bttClear.Location = new System.Drawing.Point(431, 122);
+            this.bttClear.Location = new System.Drawing.Point(431, 143);
             this.bttClear.Name = "bttClear";
             this.bttClear.Size = new System.Drawing.Size(162, 43);
             this.bttClear.TabIndex = 36;
             this.bttClear.Text = "CLEAR FIELDS";
             this.bttClear.UseVisualStyleBackColor = true;
+            this.bttClear.Visible = false;
             this.bttClear.Click += new System.EventHandler(this.bttClear_Click);
             // 
-            // bttNew
+            // btnMainNew
             // 
-            this.bttNew.Font = new System.Drawing.Font("Book Antiqua", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bttNew.Location = new System.Drawing.Point(431, 23);
-            this.bttNew.Name = "bttNew";
-            this.bttNew.Size = new System.Drawing.Size(162, 43);
-            this.bttNew.TabIndex = 28;
-            this.bttNew.Text = "ADD NEW PET";
-            this.bttNew.UseVisualStyleBackColor = true;
-            this.bttNew.Click += new System.EventHandler(this.bttNew_Click);
+            this.btnMainNew.Font = new System.Drawing.Font("Book Antiqua", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMainNew.Location = new System.Drawing.Point(431, 44);
+            this.btnMainNew.Name = "btnMainNew";
+            this.btnMainNew.Size = new System.Drawing.Size(162, 43);
+            this.btnMainNew.TabIndex = 28;
+            this.btnMainNew.Text = "ADD NEW PET";
+            this.btnMainNew.UseVisualStyleBackColor = true;
+            this.btnMainNew.Visible = false;
+            this.btnMainNew.Click += new System.EventHandler(this.bttNew_Click);
             // 
-            // comboSeller
+            // comBoxMainSeller
             // 
-            this.comboSeller.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboSeller.Font = new System.Drawing.Font("Book Antiqua", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboSeller.FormattingEnabled = true;
-            this.comboSeller.Location = new System.Drawing.Point(172, 185);
-            this.comboSeller.Name = "comboSeller";
-            this.comboSeller.Size = new System.Drawing.Size(223, 31);
-            this.comboSeller.TabIndex = 27;
+            this.comBoxMainSeller.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comBoxMainSeller.Font = new System.Drawing.Font("Book Antiqua", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comBoxMainSeller.FormattingEnabled = true;
+            this.comBoxMainSeller.Location = new System.Drawing.Point(172, 185);
+            this.comBoxMainSeller.Name = "comBoxMainSeller";
+            this.comBoxMainSeller.Size = new System.Drawing.Size(223, 31);
+            this.comBoxMainSeller.TabIndex = 27;
             // 
-            // bttSell
+            // btnMainSell
             // 
-            this.bttSell.Font = new System.Drawing.Font("Book Antiqua", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bttSell.Location = new System.Drawing.Point(431, 73);
-            this.bttSell.Name = "bttSell";
-            this.bttSell.Size = new System.Drawing.Size(162, 43);
-            this.bttSell.TabIndex = 29;
-            this.bttSell.Text = "SELL PET";
-            this.bttSell.UseVisualStyleBackColor = true;
-            this.bttSell.Click += new System.EventHandler(this.bttSell_Click);
+            this.btnMainSell.Font = new System.Drawing.Font("Book Antiqua", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMainSell.Location = new System.Drawing.Point(431, 94);
+            this.btnMainSell.Name = "btnMainSell";
+            this.btnMainSell.Size = new System.Drawing.Size(162, 43);
+            this.btnMainSell.TabIndex = 29;
+            this.btnMainSell.Text = "SELL PET";
+            this.btnMainSell.UseVisualStyleBackColor = true;
+            this.btnMainSell.Visible = false;
+            this.btnMainSell.Click += new System.EventHandler(this.bttSell_Click);
             // 
-            // lblDescription
+            // lblMainDescription
             // 
-            this.lblDescription.AutoSize = true;
-            this.lblDescription.Font = new System.Drawing.Font("Book Antiqua", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDescription.Location = new System.Drawing.Point(11, 67);
-            this.lblDescription.Name = "lblDescription";
-            this.lblDescription.Size = new System.Drawing.Size(149, 23);
-            this.lblDescription.TabIndex = 34;
-            this.lblDescription.Text = "Pet Description :";
+            this.lblMainDescription.AutoSize = true;
+            this.lblMainDescription.Font = new System.Drawing.Font("Book Antiqua", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMainDescription.Location = new System.Drawing.Point(11, 67);
+            this.lblMainDescription.Name = "lblMainDescription";
+            this.lblMainDescription.Size = new System.Drawing.Size(149, 23);
+            this.lblMainDescription.TabIndex = 34;
+            this.lblMainDescription.Text = "Pet Description :";
             // 
-            // lblStatus
+            // lblMainStatus
             // 
-            this.lblStatus.AutoSize = true;
-            this.lblStatus.Font = new System.Drawing.Font("Book Antiqua", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStatus.Location = new System.Drawing.Point(89, 150);
-            this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(71, 23);
-            this.lblStatus.TabIndex = 33;
-            this.lblStatus.Text = "Status :";
+            this.lblMainStatus.AutoSize = true;
+            this.lblMainStatus.Font = new System.Drawing.Font("Book Antiqua", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMainStatus.Location = new System.Drawing.Point(89, 150);
+            this.lblMainStatus.Name = "lblMainStatus";
+            this.lblMainStatus.Size = new System.Drawing.Size(71, 23);
+            this.lblMainStatus.TabIndex = 33;
+            this.lblMainStatus.Text = "Status :";
             // 
-            // lblName
+            // lblMainName
             // 
-            this.lblName.AutoSize = true;
-            this.lblName.Font = new System.Drawing.Font("Book Antiqua", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblName.Location = new System.Drawing.Point(57, 109);
-            this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(103, 23);
-            this.lblName.TabIndex = 32;
-            this.lblName.Text = "Pet Name :";
+            this.lblMainName.AutoSize = true;
+            this.lblMainName.Font = new System.Drawing.Font("Book Antiqua", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMainName.Location = new System.Drawing.Point(57, 109);
+            this.lblMainName.Name = "lblMainName";
+            this.lblMainName.Size = new System.Drawing.Size(103, 23);
+            this.lblMainName.TabIndex = 32;
+            this.lblMainName.Text = "Pet Name :";
             // 
-            // lblSeller
+            // lblMainSeller
             // 
-            this.lblSeller.AutoSize = true;
-            this.lblSeller.Font = new System.Drawing.Font("Book Antiqua", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSeller.Location = new System.Drawing.Point(92, 190);
-            this.lblSeller.Name = "lblSeller";
-            this.lblSeller.Size = new System.Drawing.Size(68, 23);
-            this.lblSeller.TabIndex = 31;
-            this.lblSeller.Tag = "";
-            this.lblSeller.Text = "Seller :";
+            this.lblMainSeller.AutoSize = true;
+            this.lblMainSeller.Font = new System.Drawing.Font("Book Antiqua", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMainSeller.Location = new System.Drawing.Point(92, 190);
+            this.lblMainSeller.Name = "lblMainSeller";
+            this.lblMainSeller.Size = new System.Drawing.Size(68, 23);
+            this.lblMainSeller.TabIndex = 31;
+            this.lblMainSeller.Tag = "";
+            this.lblMainSeller.Text = "Seller :";
             // 
             // tabControl1
             // 
@@ -1113,12 +1114,12 @@
             this.comBoxPetTypeSearch.Items.AddRange(new object[] {
             "Show all",
             "Pet Id",
-            "Pet Type",
-            "Pet Name"});
+            "Pet Type"});
             this.comBoxPetTypeSearch.Location = new System.Drawing.Point(271, 625);
             this.comBoxPetTypeSearch.Name = "comBoxPetTypeSearch";
             this.comBoxPetTypeSearch.Size = new System.Drawing.Size(178, 31);
             this.comBoxPetTypeSearch.TabIndex = 47;
+            this.comBoxPetTypeSearch.TextChanged += new System.EventHandler(this.comBoxPetTypeSearch_TextChanged);
             // 
             // tBoxPetTypeSearch
             // 
@@ -1127,6 +1128,28 @@
             this.tBoxPetTypeSearch.Name = "tBoxPetTypeSearch";
             this.tBoxPetTypeSearch.Size = new System.Drawing.Size(314, 31);
             this.tBoxPetTypeSearch.TabIndex = 46;
+            this.tBoxPetTypeSearch.TextChanged += new System.EventHandler(this.tBoxPetTypeSearch_TextChanged);
+            // 
+            // comBoxMainPetType
+            // 
+            this.comBoxMainPetType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comBoxMainPetType.Font = new System.Drawing.Font("Book Antiqua", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comBoxMainPetType.FormattingEnabled = true;
+            this.comBoxMainPetType.Location = new System.Drawing.Point(172, 26);
+            this.comBoxMainPetType.Name = "comBoxMainPetType";
+            this.comBoxMainPetType.Size = new System.Drawing.Size(223, 31);
+            this.comBoxMainPetType.TabIndex = 48;
+            // 
+            // btnMainPets
+            // 
+            this.btnMainPets.Font = new System.Drawing.Font("Book Antiqua", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMainPets.Location = new System.Drawing.Point(608, 44);
+            this.btnMainPets.Name = "btnMainPets";
+            this.btnMainPets.Size = new System.Drawing.Size(162, 43);
+            this.btnMainPets.TabIndex = 49;
+            this.btnMainPets.Text = "Pets";
+            this.btnMainPets.UseVisualStyleBackColor = true;
+            this.btnMainPets.Click += new System.EventHandler(this.btnMainPets_Click);
             // 
             // PetShopForm
             // 
@@ -1158,27 +1181,26 @@
 
         private System.Windows.Forms.TabPage tabMain;
         private System.Windows.Forms.DataGridView dataGridMain;
-        private System.Windows.Forms.ComboBox comboStatus;
+        private System.Windows.Forms.ComboBox comBoxMainStatus;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.ComboBox comboClient;
+        private System.Windows.Forms.ComboBox comBoxMainClient;
         private System.Windows.Forms.ComboBox comBoxMainSearch;
-        private System.Windows.Forms.Label lblClient;
+        private System.Windows.Forms.Label lblMainClient;
         private System.Windows.Forms.TextBox tBoxMainSearch;
-        private System.Windows.Forms.TextBox tBoxType;
-        private System.Windows.Forms.TextBox tBoxDescription;
-        private System.Windows.Forms.TextBox tBoxName;
+        private System.Windows.Forms.TextBox tBoxMainDescription;
+        private System.Windows.Forms.TextBox tBoxMainPetName;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label lblPetType;
+        private System.Windows.Forms.Label lblMainPetType;
         private System.Windows.Forms.Button bttExit;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button bttClear;
-        private System.Windows.Forms.Button bttNew;
-        private System.Windows.Forms.ComboBox comboSeller;
-        private System.Windows.Forms.Button bttSell;
-        private System.Windows.Forms.Label lblDescription;
-        private System.Windows.Forms.Label lblStatus;
-        private System.Windows.Forms.Label lblName;
-        private System.Windows.Forms.Label lblSeller;
+        private System.Windows.Forms.Button btnMainNew;
+        private System.Windows.Forms.ComboBox comBoxMainSeller;
+        private System.Windows.Forms.Button btnMainSell;
+        private System.Windows.Forms.Label lblMainDescription;
+        private System.Windows.Forms.Label lblMainStatus;
+        private System.Windows.Forms.Label lblMainName;
+        private System.Windows.Forms.Label lblMainSeller;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.DataGridViewTextBoxColumn PetID;
         private System.Windows.Forms.DataGridViewTextBoxColumn PetType1;
@@ -1201,7 +1223,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.Button btnStaff;
+        private System.Windows.Forms.Button btnMainStaff;
         private System.Windows.Forms.Button btnStaffCalcel;
         private System.Windows.Forms.Button btnStaffOK;
         private System.Windows.Forms.TextBox tBoxStaffFirstName;
@@ -1210,8 +1232,8 @@
         private System.Windows.Forms.Label lblStaffFirstName;
         private System.Windows.Forms.Label lblStaffLastName;
         private System.Windows.Forms.Label lblStaffPhone;
-        private System.Windows.Forms.Button btnPets;
-        private System.Windows.Forms.Button btnClients;
+        private System.Windows.Forms.Button btnMainPetType;
+        private System.Windows.Forms.Button btnMainClients;
         private System.Windows.Forms.Button btnClientsCancel;
         private System.Windows.Forms.Button btnClientsOK;
         private System.Windows.Forms.TextBox tBoxClientsFirstName;
@@ -1250,6 +1272,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
+        private System.Windows.Forms.ComboBox comBoxMainPetType;
+        private System.Windows.Forms.Button btnMainPets;
     }
 }
 
