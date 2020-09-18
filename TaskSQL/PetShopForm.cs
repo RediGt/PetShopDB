@@ -194,7 +194,9 @@ namespace TaskSQL
             if (lblOperationWithPets.Text == "Insert new pet data :")
                 InsertNewPet();
             if (lblOperationWithPets.Text == "Fill in missing data :")
+            {
                 SellPet();
+            }               
         }
 
         private void InsertNewPet()
@@ -214,7 +216,7 @@ namespace TaskSQL
         {
             ClearBoxesInMain();
             HideBoxesInMain();
-            lblOperationWithPets.Visible = false;
+            lblOperationWithPets.Text = "";
         }
 
         private string SearchForPetTypeId()
@@ -243,9 +245,17 @@ namespace TaskSQL
 
         private void dataGridMain_MouseClick(object sender, MouseEventArgs e)
         {
-            ClearBoxesInMain();
+            if (lblOperationWithPets.Text != "Click on the List for necessary pet :" &&
+                lblOperationWithPets.Text != "The pet is sold!" &&
+                lblOperationWithPets.Text != "Fill in missing data :")
+                return;
+            
+            ClearBoxesInMain();                      
             FromGrigToBoxesInMain();
-            lblOperationWithPets.Text = "Fill in missing data :";
+            if (comBoxMainStatus.Text == "Sold" && comBoxMainPetType.Visible == true)
+                lblOperationWithPets.Text = "The pet is sold!";
+            else if (comBoxMainPetType.Visible == true)
+                lblOperationWithPets.Text = "Fill in missing data :";
         }
 
         private void bttSell_Click(object sender, EventArgs e)
@@ -253,6 +263,7 @@ namespace TaskSQL
             ClearBoxesInMain();
             VisiblizeMainBoxesForSell();
             lblOperationWithPets.Text = "Click on the List for necessary pet :";
+            lblOperationWithPets.Visible = true;
         }
 
         private void SellPet()
@@ -405,6 +416,7 @@ namespace TaskSQL
             tabControl1.TabPages.Remove(tabStaff);
             tabControl1.TabPages.Add(tabMain);
             tabControl1.SelectedTab = tabMain;
+            EnableStaffBoxes();
             banner.Visible = true;
         }
 
@@ -427,6 +439,7 @@ namespace TaskSQL
             lblOperationWithStaff.Visible = true;
             lblOperationWithStaff.Text = "Insert new employee data :";
             VisiblizeStaffBoxes();
+            EnableStaffBoxes();
         }
 
         private void tBoxStaffFirstName_TextChanged(object sender, EventArgs e)
@@ -465,7 +478,11 @@ namespace TaskSQL
             if (lblOperationWithStaff.Text == "Insert new employee data :")
                 InsertNewStaff();
             if (lblOperationWithStaff.Text == "Edit employee data :")
+            {
                 EditStaff();
+            }
+
+            EnableStaffBoxes();
         }
 
         private void InsertNewStaff()
@@ -528,10 +545,18 @@ namespace TaskSQL
             tBoxStaffPhone.Visible = true;
         }
 
+        private void EnableStaffBoxes()
+        {
+            tBoxStaffFirstName.Enabled = true;
+            tBoxStaffLastName.Enabled = true;
+            tBoxStaffPhone.Enabled = true;
+        }
+
         private void btnStaffCalcel_Click(object sender, EventArgs e)
         {
             HideStaffBoxes();
             lblOperationWithStaff.Visible = false;
+            EnableStaffBoxes();
         }
 
         private void btnStaffEdit_Click(object sender, EventArgs e)
@@ -540,13 +565,21 @@ namespace TaskSQL
             lblOperationWithStaff.Visible = true;
             lblOperationWithStaff.Text = "Click on the List for necessary employee :";
             VisiblizeStaffBoxes();
+            tBoxStaffFirstName.Enabled = false;
+            tBoxStaffLastName.Enabled = false;
+            tBoxStaffPhone.Enabled = false;
         }
 
         private void dataGridStaff_MouseClick(object sender, MouseEventArgs e)
         {
+            if (lblOperationWithStaff.Text != "Click on the List for necessary employee :" &&
+                lblOperationWithStaff.Text != "Edit employee data :")
+                return;
+
             ClearStaffBoxes();
             lblOperationWithStaff.Text = "Edit employee data :";
             FromStaffGrigToBoxes();
+            EnableStaffBoxes();
         }
 
         private void FromStaffGrigToBoxes()
@@ -579,6 +612,7 @@ namespace TaskSQL
             tabControl1.TabPages.Remove(tabClients);
             tabControl1.TabPages.Add(tabMain);
             tabControl1.SelectedTab = tabMain;
+            EnableClientsBoxes();
             banner.Visible = true;
         }
        
@@ -598,6 +632,7 @@ namespace TaskSQL
         private void btnClientsNew_Click(object sender, EventArgs e)
         {
             ClearClientsBoxes();
+            EnableClientsBoxes();
             lblOperationWithClients.Visible = true;
             lblOperationWithClients.Text = "Insert new client data :";
             VisiblizeClientsBoxes();
@@ -639,7 +674,11 @@ namespace TaskSQL
             if (lblOperationWithClients.Text == "Insert new client data :")
                 InsertNewClient();
             if (lblOperationWithClients.Text == "Edit client data :")
+            {
                 EditClient();
+            }
+
+            EnableClientsBoxes();
         }
 
         private void InsertNewClient()
@@ -702,9 +741,17 @@ namespace TaskSQL
             tBoxClientsPhone.Visible = true;
         }
 
+        private void EnableClientsBoxes()
+        {
+            tBoxClientsFirstName.Enabled = true;
+            tBoxClientsLastName.Enabled = true;
+            tBoxClientsPhone.Enabled = true;
+        }
+
         private void btnClientsCancel_Click(object sender, EventArgs e)
         {
             HideClientsBoxes();
+            EnableClientsBoxes();
             lblOperationWithClients.Visible = false;
         }
 
@@ -714,13 +761,21 @@ namespace TaskSQL
             lblOperationWithClients.Visible = true;
             lblOperationWithClients.Text = "Click on the List for necessary client :";
             VisiblizeClientsBoxes();
+            tBoxClientsFirstName.Enabled = false;
+            tBoxClientsLastName.Enabled = false;
+            tBoxClientsPhone.Enabled = false;
         }
 
         private void dataGridClients_MouseClick(object sender, MouseEventArgs e)
-        { 
+        {
+            if (lblOperationWithClients.Text != "Click on the List for necessary client :" &&
+                lblOperationWithClients.Text != "Edit client data :")
+                return;
+            
             ClearClientsBoxes();
             lblOperationWithClients.Text = "Edit client data :";
             FromClientsGrigToBoxes();
+            EnableClientsBoxes();
         }
 
         private void FromClientsGrigToBoxes()
@@ -754,6 +809,7 @@ namespace TaskSQL
             tabControl1.TabPages.Remove(tabPetType);
             tabControl1.TabPages.Add(tabMain);
             tabControl1.SelectedTab = tabMain;
+            EnablePetTypeBoxes();
             banner.Visible = true;
         }
 
@@ -772,6 +828,7 @@ namespace TaskSQL
         private void btnPetTypeNew_Click(object sender, EventArgs e)
         {
             ClearPetTypeBoxes();
+            EnablePetTypeBoxes();
             lblOperationWithPetType.Visible = true;
             lblOperationWithPetType.Text = "Insert new pet type data :";
             VisiblizePetTypeBoxes();
@@ -807,7 +864,11 @@ namespace TaskSQL
             if (lblOperationWithPetType.Text == "Insert new pet type data :")
                 InsertNewPetType();
             if (lblOperationWithPetType.Text == "Edit pet type data :")
+            {
                 EditPetType();
+            }
+
+            EnablePetTypeBoxes();
         }
 
         private void InsertNewPetType()
@@ -843,7 +904,7 @@ namespace TaskSQL
         private void ClearPetTypeBoxes()
         {
             tBoxPetTypeType.Text = "";
-            tBoxMainDescription.Text = "";
+            tBoxPetTypeDescription.Text = "";
         }
 
         private void HidePetTypeBoxes()
@@ -864,9 +925,16 @@ namespace TaskSQL
             tBoxPetTypeDescription.Visible = true;
         }
 
+        private void EnablePetTypeBoxes()
+        {
+            tBoxPetTypeType.Enabled = true;
+            tBoxPetTypeDescription.Enabled = true;
+        }
+
         private void btnPetTypeCancel_Click(object sender, EventArgs e)
         {
             HidePetTypeBoxes();
+            EnablePetTypeBoxes();
             lblOperationWithPetType.Visible = false;
         }
 
@@ -876,13 +944,20 @@ namespace TaskSQL
             lblOperationWithPetType.Visible = true;
             lblOperationWithPetType.Text = "Click on the List for necessary pet type :";
             VisiblizePetTypeBoxes();
+            tBoxPetTypeType.Enabled = false;
+            tBoxPetTypeDescription.Enabled = false;
         }
 
         private void dataGridPetType_MouseClick(object sender, MouseEventArgs e)
         {
+            if (lblOperationWithPetType.Text != "Click on the List for necessary pet type :" &&
+                lblOperationWithPetType.Text != "Edit pet type data :")
+                return;
+
             ClearPetTypeBoxes();
             lblOperationWithPetType.Text = "Edit pet type data :";
             FromPetTypeGrigToBoxes();
+            EnablePetTypeBoxes();
         }
 
         private void FromPetTypeGrigToBoxes()

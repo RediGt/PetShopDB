@@ -33,13 +33,6 @@
             this.btnMainClients = new System.Windows.Forms.Button();
             this.btnMainStaff = new System.Windows.Forms.Button();
             this.dataGridMain = new System.Windows.Forms.DataGridView();
-            this.PetID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PetType1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PetDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PetName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Seller = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Buyer = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.comBoxMainStatus = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.comBoxMainClient = new System.Windows.Forms.ComboBox();
@@ -125,6 +118,13 @@
             this.btnMainCancel = new System.Windows.Forms.Button();
             this.btnMainOK = new System.Windows.Forms.Button();
             this.lblOperationWithPets = new System.Windows.Forms.Label();
+            this.PetID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PetType1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PetDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PetName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Seller = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Buyer = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridMain)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -226,46 +226,6 @@
             this.dataGridMain.TabIndex = 35;
             this.dataGridMain.Visible = false;
             this.dataGridMain.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dataGridMain_MouseClick);
-            // 
-            // PetID
-            // 
-            this.PetID.HeaderText = "PetID";
-            this.PetID.Name = "PetID";
-            this.PetID.Width = 50;
-            // 
-            // PetType1
-            // 
-            this.PetType1.HeaderText = "Pet Type";
-            this.PetType1.Name = "PetType1";
-            // 
-            // PetDescription
-            // 
-            this.PetDescription.HeaderText = "PetDescription";
-            this.PetDescription.Name = "PetDescription";
-            // 
-            // PetName
-            // 
-            this.PetName.HeaderText = "Pet Name";
-            this.PetName.Name = "PetName";
-            this.PetName.Width = 70;
-            // 
-            // Status
-            // 
-            this.Status.HeaderText = "Status";
-            this.Status.Name = "Status";
-            this.Status.Width = 70;
-            // 
-            // Seller
-            // 
-            this.Seller.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Seller.HeaderText = "Seller";
-            this.Seller.Name = "Seller";
-            // 
-            // Buyer
-            // 
-            this.Buyer.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Buyer.HeaderText = "Buyer";
-            this.Buyer.Name = "Buyer";
             // 
             // comBoxMainStatus
             // 
@@ -775,6 +735,7 @@
             this.tBoxClientsFirstName.Name = "tBoxClientsFirstName";
             this.tBoxClientsFirstName.Size = new System.Drawing.Size(223, 31);
             this.tBoxClientsFirstName.TabIndex = 66;
+            this.tBoxClientsFirstName.TextChanged += new System.EventHandler(this.tBoxClientsFirstName_TextChanged);
             // 
             // tBoxClientsLastName
             // 
@@ -783,6 +744,7 @@
             this.tBoxClientsLastName.Name = "tBoxClientsLastName";
             this.tBoxClientsLastName.Size = new System.Drawing.Size(223, 31);
             this.tBoxClientsLastName.TabIndex = 67;
+            this.tBoxClientsLastName.TextChanged += new System.EventHandler(this.tBoxClientsLastName_TextChanged);
             // 
             // tBoxClientsPhone
             // 
@@ -791,6 +753,7 @@
             this.tBoxClientsPhone.Name = "tBoxClientsPhone";
             this.tBoxClientsPhone.Size = new System.Drawing.Size(223, 31);
             this.tBoxClientsPhone.TabIndex = 68;
+            this.tBoxClientsPhone.TextChanged += new System.EventHandler(this.tBoxClientsPhone_TextChanged);
             // 
             // lblClientsFirstName
             // 
@@ -1183,12 +1146,56 @@
             this.lblOperationWithPets.Text = "lblOperationWithPets";
             this.lblOperationWithPets.Visible = false;
             // 
+            // PetID
+            // 
+            this.PetID.HeaderText = "PetID";
+            this.PetID.Name = "PetID";
+            this.PetID.Width = 50;
+            // 
+            // PetType1
+            // 
+            this.PetType1.HeaderText = "Pet Type";
+            this.PetType1.Name = "PetType1";
+            this.PetType1.Width = 80;
+            // 
+            // PetDescription
+            // 
+            this.PetDescription.HeaderText = "PetDescription";
+            this.PetDescription.Name = "PetDescription";
+            this.PetDescription.Width = 200;
+            // 
+            // PetName
+            // 
+            this.PetName.HeaderText = "Pet Name";
+            this.PetName.Name = "PetName";
+            this.PetName.Width = 70;
+            // 
+            // Status
+            // 
+            this.Status.HeaderText = "Status";
+            this.Status.Name = "Status";
+            this.Status.Width = 70;
+            // 
+            // Seller
+            // 
+            this.Seller.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Seller.HeaderText = "Seller";
+            this.Seller.Name = "Seller";
+            // 
+            // Buyer
+            // 
+            this.Buyer.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Buyer.HeaderText = "Buyer";
+            this.Buyer.Name = "Buyer";
+            // 
             // PetShopForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(799, 701);
             this.Controls.Add(this.tabControl1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
             this.Name = "PetShopForm";
             this.Text = "Pet Shop GrossBuch";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -1233,13 +1240,6 @@
         private System.Windows.Forms.Label lblMainName;
         private System.Windows.Forms.Label lblMainSeller;
         private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PetID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PetType1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PetDescription;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PetName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Status;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Seller;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Buyer;
         private System.Windows.Forms.TabPage tabStaff;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox comBoxStaffSearch;
@@ -1308,6 +1308,13 @@
         private System.Windows.Forms.Button btnMainCancel;
         private System.Windows.Forms.Button btnMainOK;
         private System.Windows.Forms.Label lblOperationWithPets;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PetID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PetType1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PetDescription;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PetName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Status;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Seller;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Buyer;
     }
 }
 
